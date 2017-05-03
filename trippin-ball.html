@@ -1,0 +1,75 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+`trippin-ball`
+Just wait for the ball surprise and chill out
+
+@demo demo/index.html
+-->
+
+<dom-module id="trippin-ball">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      .ball,
+      .ball__content {
+        cursor: pointer;
+        background-color: orange;
+        position: relative;
+        top: 0; left: 0;
+      }
+
+      .ball {
+
+        margin: var(--ball-size, 40px) auto;
+        width: var(--ball-size, 80px);
+        height: var(--ball-size, 80px);
+        border-radius: 50%;
+        z-index: 999;
+        transition: background-color 0.4s, transform 0.7s;
+
+      }
+
+      .ball__content {
+
+        top: 50%; left: 50%;
+        transform: translateX(-50%);
+        width: var(--ball-inside-size, 30px);
+        height: var(--ball-inside-size, 30px);
+        transition: background-color 0.3s, transform 0.5s;
+
+      }
+
+      .ball:hover {
+
+        transform: scale(4) rotate(550deg);
+        background-color: #444;
+
+      }
+
+      .ball:hover > .ball__content {
+
+        transform: translateX(-50%) scale(-0.4) rotate(-700deg);
+        background-color: green;
+
+      }
+
+    </style>
+
+    <div class="ball">
+      <div class="ball__content"></div>
+    </div>
+
+  </template>
+
+  <script>
+    class TrippinBall extends Polymer.Element {
+      static get is() { return 'trippin-ball'; }
+    }
+
+    window.customElements.define(TrippinBall.is, TrippinBall);
+  </script>
+</dom-module>
